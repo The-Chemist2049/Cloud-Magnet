@@ -33,41 +33,54 @@
         }
         .logo-title {
             display: flex;
-            flex-direction: column;
-        }
-        .logo-title-top {
-            display: flex;
             align-items: center;
         }
-        .logo-title-top img {
+        .logo-title img {
             width: 20px; /* Adjust the width as needed */
             height: auto;
             margin-right: 10px;
         }
-        .logo-title-top .separator {
+        .logo-title .separator {
             margin: 0 10px;
             color: #000000;
             font-weight: bold;
         }
-        .logo-title-top span {
+        .logo-title span {
             font-size: 18px;
             font-weight: bold;
-        }
-        .portal-title {
-            font-size: 28px;
-            font-weight: regular;
-            margin-top: 10px;
         }
         .navigation {
             display: flex;
             gap: 15px;
         }
-        .navigation a {
+        .navigation a, .dropdown {
             text-decoration: none;
-            color: #0078d4; /* Link color */
+            color: #000000; /* Black color for links */
+            position: relative;
+            font-size: 16px; /* Regular font size */
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #000000; /* Black color for dropdown links */
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px; /* Reduced font size */
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .navigation a:hover, .dropdown-content a:hover {
+            text-decoration: underline;
         }
         .dashboard-title {
-            font-size: 24px;
+            font-size: 20px; /* Reduced font size */
             font-weight: bold;
             margin: 20px 0;
             text-align: center;
@@ -80,23 +93,6 @@
         }
         .active-dashboard {
             display: block; /* Show active dashboard */
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #187c64;
-            color: #ffffff;
-            border: 1px solid #187c64;
-            text-decoration: none;
-            text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #ffffff;
-            color: #187c64;
-            border-color: #187c64;
         }
         .footer {
             margin-top: 20px;
@@ -118,17 +114,30 @@
             color: #187c64;
             font-size: 24px;
         }
+        .logo-title .dropdown a {
+            color: #000000; /* Black color for Visuals */
+            text-decoration: none; /* Remove underline */
+            margin-left: 10px; /* Space between CloudMagnet and Visuals */
+        }
+        .logo-title .dropdown a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="logo-title">
-            <div class="logo-title-top">
-                <img src="cloudmagnet.png" alt="CloudMagnet Logo">
-                <span class="separator">|</span>
-                <span>CloudMagnet</span>
+            <img src="cloudmagnet.png" alt="CloudMagnet Logo">
+            <span class="separator">|</span>
+            <span>CloudMagnet</span>
+            <div class="dropdown">
+                <a href="javascript:void(0)">Visuals</a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="showDashboard(0, 'UIUX Designers Insights')">UIUX Insights</a>
+                    <a href="javascript:void(0)" onclick="showDashboard(1, 'Census Data')">Census Data</a>
+                    <a href="javascript:void(0)" onclick="showDashboard(2, 'Marketing Analysis')">Marketing Analysis</a>
+                </div>
             </div>
-            <div class="portal-title">CloudMagnet Data Visualization Portal</div>
         </div>
         <div class="navigation">
             <a href="index.html">Home</a>
@@ -141,11 +150,7 @@
         <!-- Dashboards -->
         <iframe class="dashboard active-dashboard" title="UIUX Designers Insights" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=678385cb-1dc3-49f5-9f9d-5e65894fbebd&autoAuth=true&ctid=0765532a-06c1-4f0f-9f39-394689f5f8fe" frameborder="0" allowFullScreen="true"></iframe>
         <iframe class="dashboard" title="Census Data" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=8797e3bb-d81f-4a0a-812b-ef6bdd7183f6&autoAuth=true&ctid=0765532a-06c1-4f0f-9f39-394689f5f8fe" frameborder="0" allowFullScreen="true"></iframe>
-        <!-- Navigation Buttons -->
-        <div>
-            <button class="btn" onclick="showDashboard(0, 'UIUX Designers Insights')">EduBridge</button>
-            <button class="btn" onclick="showDashboard(1, 'Kenyan Population 19')">Kenyan Population 19</button>
-        </div>
+        <iframe class="dashboard" title="Marketing Analysis" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=a06335f4-19e7-42b5-960a-c2bc13b53b90&autoAuth=true&ctid=0765532a-06c1-4f0f-9f39-394689f5f8fe" frameborder="0" allowFullScreen="true"></iframe>
     </div>
     <div class="footer">© 2024 CloudMagnet. All rights reserved.</div>
 
