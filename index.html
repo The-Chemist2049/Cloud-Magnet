@@ -27,27 +27,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
             border-bottom: 2px solid #187c64;
-            padding-bottom: 10px;
         }
         .logo-title {
             display: flex;
+            flex-direction: column;
+        }
+        .logo-title-top {
+            display: flex;
             align-items: center;
         }
-        .logo-title img {
+        .logo-title-top img {
             width: 20px; /* Adjust the width as needed */
             height: auto;
             margin-right: 10px;
         }
-        .logo-title .separator {
+        .logo-title-top .separator {
             margin: 0 10px;
             color: #000000;
             font-weight: bold;
         }
-        .logo-title span {
+        .logo-title-top span {
             font-size: 18px;
             font-weight: bold;
+        }
+        .portal-title {
+            font-size: 28px;
+            font-weight: regular;
+            margin-top: 10px;
         }
         .navigation {
             display: flex;
@@ -58,12 +67,10 @@
             color: #0078d4; /* Link color */
         }
         .dashboard-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             margin: 20px 0;
-        }
-        .dashboard-subtitle {
-            color: #187c64; /* Green color for the tagline */
+            text-align: center;
         }
         .dashboard {
             display: none; /* Hide all dashboards initially */
@@ -114,28 +121,30 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo-title">
+    <div class="header">
+        <div class="logo-title">
+            <div class="logo-title-top">
                 <img src="cloudmagnet.png" alt="CloudMagnet Logo">
                 <span class="separator">|</span>
                 <span>CloudMagnet</span>
             </div>
-            <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contacts.html">Contacts</a>
-            </div>
+            <div class="portal-title">CloudMagnet Data Visualization Portal</div>
         </div>
-        <div class="dashboard-title">CloudMagnet Data Visualization Portal</div>
-        <div class="dashboard-subtitle">Uncover Insights with Stunning Visual Representations</div>
+        <div class="navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contacts.html">Contacts</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="dashboard-title" id="dashboard-title">UIUX Designers Insights</div>
         <!-- Dashboards -->
         <iframe class="dashboard active-dashboard" title="UIUX Designers Insights" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=678385cb-1dc3-49f5-9f9d-5e65894fbebd&autoAuth=true&ctid=0765532a-06c1-4f0f-9f39-394689f5f8fe" frameborder="0" allowFullScreen="true"></iframe>
         <iframe class="dashboard" title="Census Data" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=8797e3bb-d81f-4a0a-812b-ef6bdd7183f6&autoAuth=true&ctid=0765532a-06c1-4f0f-9f39-394689f5f8fe" frameborder="0" allowFullScreen="true"></iframe>
         <!-- Navigation Buttons -->
         <div>
-            <button class="btn" onclick="showDashboard(0)">EduBridge</button>
-            <button class="btn" onclick="showDashboard(1)">Kenyan Population 19</button>
+            <button class="btn" onclick="showDashboard(0, 'UIUX Designers Insights')">EduBridge</button>
+            <button class="btn" onclick="showDashboard(1, 'Kenyan Population 19')">Kenyan Population 19</button>
         </div>
     </div>
     <div class="footer">© 2024 CloudMagnet. All rights reserved.</div>
@@ -143,8 +152,9 @@
     <script>
         // JavaScript for Dashboard Navigation
         const dashboards = document.querySelectorAll('.dashboard');
+        const dashboardTitle = document.getElementById('dashboard-title');
         
-        function showDashboard(index) {
+        function showDashboard(index, title) {
             // Hide all dashboards
             dashboards.forEach((dashboard) => {
                 dashboard.classList.remove('active-dashboard');
@@ -152,6 +162,9 @@
             
             // Show the selected dashboard
             dashboards[index].classList.add('active-dashboard');
+            
+            // Update the dashboard title
+            dashboardTitle.textContent = title;
         }
     </script>
 </body>

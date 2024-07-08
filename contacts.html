@@ -25,27 +25,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
             border-bottom: 2px solid #187c64;
-            padding-bottom: 10px;
         }
         .logo-title {
             display: flex;
+            flex-direction: column;
+        }
+        .logo-title-top {
+            display: flex;
             align-items: center;
         }
-        .logo-title img {
+        .logo-title-top img {
             width: 20px; /* Adjust the width as needed */
             height: auto;
             margin-right: 10px;
         }
-        .logo-title .separator {
+        .logo-title-top .separator {
             margin: 0 10px;
             color: #000000;
             font-weight: bold;
         }
-        .logo-title span {
+        .logo-title-top span {
             font-size: 18px;
             font-weight: bold;
+        }
+        .portal-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 10px;
         }
         .navigation {
             display: flex;
@@ -82,19 +91,22 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo-title">
+    <div class="header">
+        <div class="logo-title">
+            <div class="logo-title-top">
                 <img src="cloudmagnet.png" alt="CloudMagnet Logo">
                 <span class="separator">|</span>
                 <span>CloudMagnet</span>
             </div>
-            <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contacts.html">Contacts</a>
-            </div>
+            <div class="portal-title">CloudMagnet Data Visualization Portal</div>
         </div>
+        <div class="navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contacts.html">Contacts</a>
+        </div>
+    </div>
+    <div class="container">
         <div class="contact-title">Contact Us</div>
         <div class="contacts">
             <div class="contact-item">
