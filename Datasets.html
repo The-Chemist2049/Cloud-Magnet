@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Browser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dataset-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .dataset-item {
+            padding: 10px 20px;
+            margin: 5px 0;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dataset-item:hover {
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Browse Datasets</h1>
+    <div class="dataset-list">
+        <div class="dataset-item" data-url="path/to/dataset1.csv">Dataset 1</div>
+        <div class="dataset-item" data-url="path/to/dataset2.csv">Dataset 2</div>
+        <div class="dataset-item" data-url="path/to/dataset3.csv">Dataset 3</div>
+        <!-- Add more dataset items as needed -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const datasetItems = document.querySelectorAll('.dataset-item');
+
+            datasetItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const datasetUrl = item.getAttribute('data-url');
+                    window.open(datasetUrl, '_blank');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

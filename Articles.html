@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Articles</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #f2f2f2;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .nav-button {
+            background: none;
+            color: #187c64;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            margin: 0;
+        }
+        .nav-button:hover {
+            text-decoration: underline;
+        }
+        .progress-bar-container {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0;
+        }
+        .progress-bar {
+            width: 150px;
+            background-color: #e0e0e0;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #187c64;
+            width: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .article {
+            display: none;
+        }
+        .article.active {
+            display: block;
+        }
+        #continue {
+            background-color: #187c64;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px 0;
+        }
+        #continue:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="nav-button" id="previous">Previous</button>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        <button class="nav-button" id="next">Next</button>
+    </div>
+    <div class="container">
+        <div class="article active" id="article-1">
+            <h1>Article Title</h1>
+            <h2>Section 1</h2>
+            <p>This is the content of the first section. It includes some text and an image.</p>
+            <img src="https://via.placeholder.com/800x300" alt="Placeholder Image" id="image-1">
+        </div>
+        <div class="article" id="article-2">
+            <h2>Section 2</h2>
+            <p>This is the content of the second section. It includes some text and an image.</p>
+            <img src="https://via.placeholder.com/800x300" alt="Placeholder Image" id="image-2">
+        </div>
+        <div class="article" id="article-3">
+            <h2>Section 3</h2>
+            <p>This is the content of the third section. It includes some text and an image.</p>
+            <img src="https://via.placeholder.com/800x300" alt="Placeholder Image" id="image-3">
+        </div>
+        <div class="article" id="article-4">
+            <h2>Section 4</h2>
+            <p>This is the content of the fourth section. It includes some text and an image.</p>
+            <img src="https://via.placeholder.com/800x300" alt="Placeholder Image" id="image-4">
+        </div>
+        <button id="continue">Continue</button>
+    </div>
+
+    <script>
+        const articles = document.querySelectorAll('.article');
+        const progress = document.getElementById('progress');
+        const previousButton = document.getElementById('previous');
+        const nextButton = document.getElementById('next');
+        const continueButton = document.getElementById('continue');
+        let currentArticle = 0;
+
+        function updateProgress() {
+            const progressPercentage = ((currentArticle + 1) / articles.length) * 100;
+            progress.style.width = `${progressPercentage}%`;
+        }
+
+        function updateArticles() {
+            articles.forEach((article, index) => {
+                if (index === currentArticle) {
+                    article.classList.add('active');
+                    const img = article.querySelector('img');
+                    img.style.display = img.getAttribute('src') ? 'block' : 'none';
+                } else {
+                    article.classList.remove('active');
+                }
+            });
+            updateProgress();
+        }
+
+        previousButton.addEventListener('click', () => {
+            if (currentArticle > 0) {
+                currentArticle--;
+                updateArticles();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentArticle < articles.length - 1) {
+                currentArticle++;
+                updateArticles();
+            }
+        });
+
+        continueButton.addEventListener('click', () => {
+            if (currentArticle < articles.length - 1) {
+                currentArticle++;
+                updateArticles();
+            }
+        });
+
+        updateArticles();
+    </script>
+</body>
+</html>
