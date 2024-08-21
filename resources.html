@@ -29,7 +29,7 @@
             align-items: center;
         }
         .logo-title img {
-           width: 20px;
+            width: 20px;
             height: auto;
             margin-right: 5px;
             margin-top: 8px;
@@ -49,10 +49,9 @@
             color: #000000; /* Black color for Visuals */
             text-decoration: none; /* Remove underline */
             margin-left: 10px; /* Adjusted space between CloudMagnet and Visuals */
+        }
 
-}
-
-         .navigation {
+        .navigation {
             display: flex;
             gap: 15px;
         }
@@ -127,6 +126,14 @@
                     <a href="javascript:void(0)" onclick="showDashboard(2, 'Marketing Analysis')">Marketing Analysis</a>
                 </div>
             </div>
+            <div class="dropdown">
+                <a href="javascript:void(0)">Articles</a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="showArticle('article-1')">Article 1</a>
+                    <a href="javascript:void(0)" onclick="showArticle('article-2')">Article 2</a>
+                    <a href="javascript:void(0)" onclick="showArticle('article-3')">Article 3</a>
+                </div>
+            </div>
         </div>
         <div class="navigation">
             <a href="index.html">Home</a>
@@ -158,6 +165,10 @@
             
             // Update the dashboard title
             dashboardTitle.innerText = title;
+        }
+
+        function showArticle(articleId) {
+            window.location.href = 'articles.html#' + articleId;
         }
     </script>
 </body>
